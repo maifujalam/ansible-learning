@@ -46,11 +46,11 @@
 #    executable: /bin/bash
   become: true
   async: 1800   # Max allowed time in sec
-  poll: 0      # Check status every 15 sec.Default is 10 sec.
+  poll: 0      # Check status every 15 sec.Default is 10 sec.Set 0 for fire and forget.
   register: r3
   when: r0.rc != 0
 
-- name: Check progress..
+- name: May take upto 30 minutes.Checking progress...
   async_status:
     jid: "{{ r3.ansible_job_id }}"
   register: job_result
