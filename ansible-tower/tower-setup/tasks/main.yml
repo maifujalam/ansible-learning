@@ -9,5 +9,9 @@
 #- name: Role run set-ram
 #  include: set-ram.yml
 
-- name: Role run set password
-  include: set-password.yml
+#- name: Role run set password
+#  include: set-password.yml
+
+- name: Installing tower now
+#  become: true
+  include: install.yml

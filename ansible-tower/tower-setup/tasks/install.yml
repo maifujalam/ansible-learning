@@ -1,0 +1,78 @@
+- name: Installing epel
+  dnf:
+    name: epel-release
+    state: latest
+  become: true
+
+#- name: Upgrade all packages
+#  dnf:
+#    name: "*"
+#    state: latest
+
+#- name: Installing Ansible
+#  dnf:
+#    name: ansible
+#    state: latest
+#  become: true
+
+- name: Get ansible tower status
+  shell: ansible-tower-service status
+  ignore_errors: true
+  register: r0
+
+#- debug:
+#    msg: "{{r0}}"
+
+- block:
+    - name: "end play nothing to do"
+      debug:
+        msg: "Ansible Tower already Installed."
+    - meta: end_play
+  when: r0.rc == 0
+
+- name: Get path
+  shell: ls /tmp/ansible-tower
+  register: r1
+
+- name:
+  debug:
+    msg: "{{r1.stdout_lines[0]}}"
+  register: r2
+
+- name: Installing tower
+  shell: ./setup.sh
+  args:
+    chdir: /tmp/ansible-tower/{{r2.msg}}
+#    executable: /bin/bash
+  become: true
+  async: 1800   # Max allowed time in sec
+  poll: 0      # Check status every 15 sec.Default is 10 sec.
+  register: r3
+  when: r0.rc != 0
+
+- name: Check progress..
+  async_status:
+    jid: "{{ r3.ansible_job_id }}"
+  register: job_result
+  until: job_result.finished
+  retries: 200
+  delay: 10
+  become: true
+
+- name: Get ansible tower status
+  shell: ansible-tower-service status
+  ignore_errors: true
+  register: r4
+
+- name: Pause for 15 sec
+  pause:
+    seconds: 5
+
+- name: Installation Status
+  debug:
+    msg: Installation is Successful.
+  when: r4.rc == 0
+
+- debug:
+    msg: Installation is Failed.
+  when: r4.rc != 0
