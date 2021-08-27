@@ -1,0 +1,5 @@
+- name: Set minimum ram to {{minimum_ram}}
+  lineinfile:
+    path: ansible-tower-setup-3.8.3-2/roles/preflight/defaults/main.yml
+    regexp: /^required_ram
+    line: "required_ram: {{minimum_ram}}"

@@ -1,0 +1,7 @@
+- name: Setup Ansible Tower
+  hosts: ansible-tower
+  gater_facts: true
+  become: true
+  tasks:
+    - include_role:
+        name: tower-setup

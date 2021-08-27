@@ -1,0 +1,9 @@
+---
+# tasks file for tower-setup
+
+- name: Role run ping host
+  include: ping.yaml
+- name: Role run set-ram
+  include: set-ram.yml
+- name: Role run set password
+  include: set-password.yml

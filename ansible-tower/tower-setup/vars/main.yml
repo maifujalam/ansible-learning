@@ -1,0 +1,5 @@
+---
+# vars file for tower-setup
+minimum_ram: 1500    #in MB
+admin_password: admin  #username admin. Password for dashboard login and backend database
+url: https://releases.ansible.com/ansible-tower/setup/ansible-tower-setup-latest.tar.gz
