@@ -1,11 +1,11 @@
-- name: Create a /tmp/ansible-setup folder
+- name: Create a /tmp/ansible-tower folder
   file:
     path: /tmp/ansible-tower
     state: directory
 
 - name: Check download file
   stat:
-    path: /tmp/ansible-tower/ansible-tower.gz
+    path: /tmp/ansible-tower/ansible-tower-setup-latest.tar.gz
   register: r0
 
 - name: Download if not downloaded
@@ -13,7 +13,10 @@
     url: "{{url}}"
     dest: /tmp/ansible-tower/
     mode: "0777"
+  when: not r0.stat.exists
 
-- name: Check if extracted
-  stat:
-    path:
+- name: Extracting
+  unarchive:
+    src: /tmp/ansible-tower/ansible-tower-setup-latest.tar.gz
+    dest: /tmp/ansible-tower
+    remote_src: yes

@@ -1,5 +1,14 @@
+- name: Get path
+  shell: ls /tmp/ansible-tower
+  register: r0
+
+- name:
+  debug:
+    msg: "{{r0.stdout_lines[0]}}"
+  register: r1
+
 - name: Set minimum ram to {{minimum_ram}}
   lineinfile:
-    path: ansible-tower-setup-3.8.3-2/roles/preflight/defaults/main.yml
-    regexp: /^required_ram
+    path: /tmp/ansible-tower/{{r1.msg}}/roles/preflight/defaults/main.yml
+    regexp: '^required_ram'
     line: "required_ram: {{minimum_ram}}"
