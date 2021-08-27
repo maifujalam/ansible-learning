@@ -1,0 +1,19 @@
+- name: Create a /tmp/ansible-setup folder
+  file:
+    path: /tmp/ansible-tower
+    state: directory
+
+- name: Check download file
+  stat:
+    path: /tmp/ansible-tower/ansible-tower.gz
+  register: r0
+
+- name: Download if not downloaded
+  get_url:
+    url: "{{url}}"
+    dest: /tmp/ansible-tower/
+    mode: "0777"
+
+- name: Check if extracted
+  stat:
+    path:
