@@ -1,0 +1,4 @@
+- name: Applying licence
+  collections:
+    - awx.awx       #when using awx.awx
+    - ansible.tower # when using ansible.tower
