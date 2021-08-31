@@ -1,0 +1,4 @@
+---
+# vars file for rbac-1.0
+user_name: alam
+group: developer

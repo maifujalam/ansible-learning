@@ -1,0 +1,18 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVMVENDQXBXZ0F3SUJBZ0lSQU82dTJ2UXEvQ2xFY3UwSWhsRm52TDh3RFFZSktvWklodmNOQVFFTEJRQXcKTHpFdE1Dc0dBMVVFQXhNa01EazVOalV3TVRNdFpEbGtaUzAwTWpNMExUazBaRGd0TmpZNE56RXpaak5oWlRFMApNQ0FYRFRJeE1EZ3pNVEF6TXpjd04xb1lEekl3TlRFd09ESTBNRFF6TnpBM1dqQXZNUzB3S3dZRFZRUURFeVF3Ck9UazJOVEF4TXkxa09XUmxMVFF5TXpRdE9UUmtPQzAyTmpnM01UTm1NMkZsTVRRd2dnR2lNQTBHQ1NxR1NJYjMKRFFFQkFRVUFBNElCandBd2dnR0tBb0lCZ1FEVldnNVZxM2huRGdhaGJ5K21oZ21WSjgrKzg2RFozay9TQ0FQMgpkWSt4MUV0bTRLNnBjME1ZZ01BVDdrVEU3Wk1aYUhWNFJwR3BOMXh6cHN6UTNmR0RwWWhBMXY4dnE2dTgxMXMvCmNIMkRPbDBVZVNHK0dDMFY3YW5sNUMvZk5xc3Yzd2dXMHEyemh1TzQyZXNQOXpZelZjK2ZDdGtwd3Jzb25KOGcKSzVzem1DNUFHU3Z4RDhJRkpnalpvWnRkVDAwSlVnbHBXWDhoUng2MnhTOE9Wa2pKWHNGQSt2ZU9Ib1hIMUFTdAovbW9nM1hYc2NNMUxrMXRzZXZEMDk1SGJNbE9CSWtRakY0a0h0NFNjVzlKb0RScndXcTBpZ2NXbTl1ekJVNnhJCisrcVRRdkNuMlRhTnZ2Unh5YVNLVTJSUzFPZkNtSFBzOHdiNHNkU2hhZ3lRMnpYbXQ2NE9VdDlaK01FV3VXa3oKdEhHbWxvTTZoOWJuTUZNL3plS2ltb0ttOGNKa2MyZU5zM01NZTZkN2w1MTNpZkQweTBpZ1RqZHRBMmVNNU95YQp3RGVYU1h3bnJveDFOVUdSSnRwRGNIdjUzWE5hVjlRejA0OGgyajFYNXU2dXV4UUF3c0Vra3B0MXVhMlpDeGJnCkNESUFrdFl4U0xCVHBxcHR4U1ZWUUk1NHJCTUNBd0VBQWFOQ01FQXdEZ1lEVlIwUEFRSC9CQVFEQWdJRU1BOEcKQTFVZEV3RUIvd1FGTUFNQkFmOHdIUVlEVlIwT0JCWUVGQ1F0T1hsT0QrSW5LOEpmeFg1eGdtazB4N2czTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQmdRQm1obHZBY29YSXJGdnhxVThLYmJxYjlCTzBUWnJpRnlQZVlDOWRTamg2Cm1CS2sxcVZzeDlrbHNkYnJkQkNDT29OU2E0aGJxVXBCM2FFUS83RHNzWTFDNDJramRFbGk4Z0VGZDUxRjhzdmgKWEtvNDVHNEtwVGEyYm5WWFFsMC9lZVBkZzlhdmRXMExCa3JwL09iSjdCb2JmdmJlMHJqVmFrbE9ockZnWGNjLwo3Vkw4WVNKdXAzaHljOHhKa2hvTkJlWHZkcFFTZkFaRGRNK0JJazVubkFuYk1mMU1TcVVwQTBqbUZpa2NUMXhRCnpTNGpuTU4vYVdZWHZoYm5PakhLaTc0Wld3RmRYREg5QkMwM00zbzBTWU5UcWJMWFFUd3o5bWJMR2ZEN2JrUWUKdmN6WVlRUHhRMzVoblQrRGRtMXE4L3BBSDhmc2t6dVlLYyt2RFo0NWNjNGNyb1pKczlib3U2cE1VNTJCOHg3TwpIbEp4RmsrR3lIYmhsbDBJWC9ER2RVSVdBeDNXZ1dSNkJJVGpUMGhLVUE1UzNPWW96bGFRYVM5U1hNMjlkRFpyCmZremQ2WVR5Si9JVU9vMnFkM1F5REVBOTIxNnhvbWVFSXBIS2JlNTJVS1ZjZUp2aFI5SFBZcis3dkZOR3c5Y2YKQlVBYit0c1dhYmo3eVJPblZGUVpTOHM9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    server: https://34.93.109.128
+  name: gke-1
+contexts:
+- context:
+    cluster: gke-1
+    user: gke-1
+  name: gke-1
+current-context: gke-1
+kind: Config
+preferences: {}
+users:
+- name: gke-1
+  user:
+    token: ya29.c.KqgBDgizFgFuuxUnqGlxOJFTCIZLkDdp9al4b5fEuxqkhHHkZQ-o0xbKUA48uQtwAQXoddONZDJjR76tdWMg7oIpC2gI-32tbb-TETBJxPtc4SenrY8ZMm6uJLt_9gGQCvSjoSNOdm2XWGp9beJIFhjbS6AjrSWRWVfUtQ6Y00BzshIDWh-HLVRkVOEtjw5U7hKWKujUEgMYYCvsR-sx5gyYvDwZnX9Jd9I9...................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................

@@ -1,0 +1,10 @@
+---
+# tasks file for rbac-1.0
+- name: Validating kube config
+  include: validate-kubeconfig.yaml
+
+- name: Generate rsa key and csr
+  include: generate-csr.yaml
+
+- name: Validate
+

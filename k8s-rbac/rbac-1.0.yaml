@@ -1,0 +1,7 @@
+- name: Setup Ansible Tower
+  hosts: localhost
+  gather_facts: false
+  become: false
+  tasks:
+    - include_role:
+        name: rbac-1.0
