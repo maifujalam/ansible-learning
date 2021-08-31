@@ -7,3 +7,11 @@
   shell: "openssl req -new -key myuser.key -out myuser.csr -subj='/CN={{user_name}}/O={{group}}' "
   args:
     chdir: /tmp/k8s-rbac
+
+- name: Get base64
+  shell: cat myuser.csr | base64 | tr -d "\n"
+  args:
+    chdir: /tmp/k8s-rbac/
+  register: csr_base64
+
+- name: Copy csr
