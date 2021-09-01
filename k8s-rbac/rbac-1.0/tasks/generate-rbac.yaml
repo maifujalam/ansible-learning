@@ -1,0 +1,7 @@
+- name: Delete existing rolebinding
+  shell: kubectl delete clusterrolebinding myuser --kubeconfig=/tmp/k8s-rbac/config
+  ignore_errors: true
+
+- name: Create rolebinding
+  shell:  kubectl create clusterrolebinding myuser --user={{user_name}} --clusterrole=cluster-admin --kubeconfig=/tmp/k8s-rbac/config
+

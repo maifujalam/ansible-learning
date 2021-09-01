@@ -1,0 +1,24 @@
+- name: Extract cluster name
+  shell: kubectl config view -o jsonpath={.clusters[0].name} --kubeconfig=/tmp/k8s-rbac/config
+  register: cluster_name
+
+- name: Extract cluster endpoint
+  shell: kubectl config view -o jsonpath={.clusters[0].cluster.server} --kubeconfig=/tmp/k8s-rbac/config
+  register: cluster_endpoint
+
+- name: Extract cluster server certificate
+  shell: kubectl config view  --raw -o jsonpath={.clusters[0].cluster.certificate-authority-data} --kubeconfig=/tmp/k8s-rbac/config
+  register: cluster_certificate
+
+- name: Fetch client certificate
+  shell: cat /tmp/k8s-rbac/myuser.crt | base64 | tr -d "\n"
+  register: client_certificate
+
+- name: Fetch client key
+  shell: cat /tmp/k8s-rbac/myuser.key | base64 | tr -d "\n"
+  register: client_key
+
+- name: Generating certificate
+  template:
+    src: config2.j2
+    dest: /tmp/k8s-rbac/config2

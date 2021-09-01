@@ -1,0 +1,25 @@
+- name: Generate key now
+  shell: openssl genrsa -out /tmp/k8s-rbac/myuser.key 2048
+
+- name: Generate certifiacate csr
+  shell: "openssl req -new -key  /tmp/k8s-rbac/myuser.key -out  /tmp/k8s-rbac/myuser.csr -subj='/CN={{user_name}}/O={{group}}' "
+
+- name: Get base64 of csr
+  shell: cat  /tmp/k8s-rbac/myuser.csr | base64 | tr -d "\n"
+  args:
+    chdir: /tmp/k8s-rbac/
+  register: csr_base64
+
+- name: Create csr of base64
+  template:
+    src: csr.yaml.j2
+    dest: /tmp/k8s-rbac/csr.yaml
+
+- name: Apply csr
+  shell: kubectl apply -f /tmp/k8s-rbac/csr.yaml --kubeconfig=/tmp/k8s-rbac/config
+
+- name: Approve csr
+  shell: kubectl certificate approve myuser --kubeconfig=/tmp/k8s-rbac/config
+
+- name: Extract certificate
+  shell: kubectl get csr myuser --kubeconfig=/tmp/k8s-rbac/config -o jsonpath='{.status.certificate}'| base64 -d > /tmp/k8s-rbac/myuser.crt
