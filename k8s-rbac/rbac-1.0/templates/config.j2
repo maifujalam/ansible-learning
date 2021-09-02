@@ -1,18 +1,20 @@
 apiVersion: v1
+kind: Config
 clusters:
 - cluster:
-    certificate-authority-data: DATA+OMITTED
-    server: https://34.93.109.128
-  name: gke-1
+    certificate-authority-data: {{cluster_certificate.stdout}}
+    server: {{cluster_endpoint.stdout}}
+  name: {{cluster_name.stdout}}
 contexts:
 - context:
-    cluster: gke-1
-    user: gke-1
-  name: gke-1
-current-context: gke-1
-kind: Config
+    cluster: {{cluster_name.stdout}}
+    namespace: default
+    user: {{user_name}}
+  name: {{cluster_name.stdout}}-{{user_name}}
+current-context: {{cluster_name.stdout}}-{{user_name}}
 preferences: {}
 users:
-- name: gke-1
+- name: {{user_name}}
   user:
-    token: REDACTED
+    client-certificate-data: {{client_certificate.stdout}}
+    client-key-data: {{client_key.stdout}}

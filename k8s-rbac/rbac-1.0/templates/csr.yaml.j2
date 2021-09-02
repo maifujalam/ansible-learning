@@ -3,6 +3,8 @@ kind: CertificateSigningRequest
 metadata:
   name: myuser
 spec:
+  groups:
+  - developer
   request: {{csr_base64.stdout}}
   signerName: kubernetes.io/kube-apiserver-client
   usages:

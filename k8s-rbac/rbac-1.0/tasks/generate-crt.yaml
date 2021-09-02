@@ -6,8 +6,6 @@
 
 - name: Get base64 of csr
   shell: cat  /tmp/k8s-rbac/myuser.csr | base64 | tr -d "\n"
-  args:
-    chdir: /tmp/k8s-rbac/
   register: csr_base64
 
 - name: Create csr of base64

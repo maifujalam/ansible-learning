@@ -20,5 +20,5 @@
 
 - name: Generating certificate
   template:
-    src: config2.j2
+    src: config.j2
     dest: /tmp/k8s-rbac/config2
